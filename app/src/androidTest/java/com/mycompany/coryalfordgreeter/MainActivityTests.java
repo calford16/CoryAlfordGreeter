@@ -1,7 +1,10 @@
 package com.mycompany.coryalfordgreeter;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.TouchUtils;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by Cory on 2/27/2016.
@@ -31,5 +34,14 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
         getInstrumentation().waitForIdleSync();
         getInstrumentation().sendStringSync("Jake");
+
+        Button greetButton = (Button) activity.findViewById(R.id.greet_button);
+
+        TouchUtils.clickView(this, greetButton);
+
+        TextView greetMessage = (TextView) activity.findViewById(R.id.message_text_view);
+
+        String actualText = greetMessage.getText().toString();
+        assertEquals("Hello, Jake!", actualText);
     }
 }
