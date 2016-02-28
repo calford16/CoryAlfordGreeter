@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -61,5 +62,16 @@ public class MainActivity extends AppCompatActivity {
         TextView messageTextView = (TextView) findViewById(R.id.message_text_view);
 
         messageTextView.setText(greeting);
+
+        Button reverseButton = (Button) findViewById(R.id.reverse_button);
+        reverseButton.setEnabled(true);
+    }
+
+    public void didTapReverseButton(View view) {
+        TextView messageTextView = (TextView) findViewById(R.id.message_text_view);
+
+        String reverseText = new StringBuilder(messageTextView.getText().toString()).reverse().toString();
+
+        messageTextView.setText(reverseText);
     }
 }
